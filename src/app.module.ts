@@ -28,6 +28,6 @@ import configDb from './config.db';
 
   ],
   controllers: [AppController],
-  providers: [AppService, BedService],
+  providers: [AppService]
 })
 export class AppModule {}
