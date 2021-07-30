@@ -20,7 +20,7 @@ export class BedService {
         return await this.bedRepository.save(bed);
     }
     async update(id: string, body: BedDto): Promise<boolean> {
-        return (await this.bedRepository.update(id, body)).affected === 1 ? true : false;
+        return (await this.bedRepository.update(id, body)).affected === /*>=*/ 1 ? true : false;
     }
     async destroy(id: string): Promise<boolean> {
         return (await this.bedRepository.delete(id)).affected === 1 ? true : false;
