@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,7 +12,6 @@ import { PatientModule } from './patient/patient.module';
 import { StayModule } from './stay/stay.module';
 import { JgpNfzModule } from './jgp-nfz/jgp-nfz.module';
 import { IllnessModule } from './illness/illness.module';
-import { BedService } from './bed/bed.service';
 import configDb from './config.db';
 @Module({
   imports: [
@@ -25,7 +25,7 @@ import configDb from './config.db';
     StayModule,
     JgpNfzModule,
     IllnessModule,
-
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]
