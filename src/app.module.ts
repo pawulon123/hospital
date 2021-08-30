@@ -25,7 +25,9 @@ import configDb from './config.db';
     StayModule,
     JgpNfzModule,
     IllnessModule,
-    UserModule
+    UserModule,
+    WardModule,
+
   ],
   controllers: [AppController],
   providers: [AppService]
