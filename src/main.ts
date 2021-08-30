@@ -2,14 +2,14 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import  {helmetCustomer as helmet}  from './cofig/HttpHeadersHelmet';
+import * as helmet from 'helmet';
 
-async function bootstrap() { console.log(helmet);
-
+async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   (app as NestExpressApplication).use(helmet());
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe({
-    disableErrorMessages: false,
+    disableErrorMessages: true,
     whitelist: true,
     forbidNonWhitelisted: true
   }));
