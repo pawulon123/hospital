@@ -12,6 +12,7 @@ import { PatientModule } from './patient/patient.module';
 import { StayModule } from './stay/stay.module';
 import { JgpNfzModule } from './jgp-nfz/jgp-nfz.module';
 import { IllnessModule } from './illness/illness.module';
+import { WardUserModule } from './ward-user/ward-user.module';
 import configDb from './config.db';
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import configDb from './config.db';
     IllnessModule,
     UserModule,
     WardModule,
+    WardUserModule,
 
   ],
   controllers: [AppController],

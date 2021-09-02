@@ -1,5 +1,5 @@
 
-import { IsEmail, IsNotEmpty, IsInt, IsOptional, IsPositive, Length, MaxLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, Length, MaxLength } from 'class-validator';
 export class UserDto {
 
     @IsNotEmpty()
@@ -8,7 +8,8 @@ export class UserDto {
     mail: string;
     
     @IsNotEmpty()
-    @Length(6, 60)
+    @Length(6, 50)
     password: string;
-
-}
+    
+    // wards:any;
+    }

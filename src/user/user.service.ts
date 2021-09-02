@@ -11,10 +11,10 @@ export class UserService {
         @InjectRepository(UserEntity)
         private userRepository: Repository<UserEntity>,
     ) { }
-    async index(): Promise<UserDto[]> {
+    async index(): Promise<any[]> {
         return await this.userRepository.find();
     }
-    async findOne(id: string): Promise<UserDto> {
+    async findOne(id: string): Promise<any> {
         return await this.userRepository.findOne(id);
     }
     async create(user: UserDto): Promise<UserEntity> {

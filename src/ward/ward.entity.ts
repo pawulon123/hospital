@@ -1,10 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { WardUserEntity } from "src/ward-user/ward-user.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "ward" })
 export class WardEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({type: 'varchar',length: 100})
+    @Column({ type: 'varchar', length: 100 })
     name: string;
+
+    @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.ward)
+    public wardUsers!: WardUserEntity[];
 }
+
