@@ -9,8 +9,8 @@ async function bootstrap() {
   (app as NestExpressApplication).use(helmet());
   app.useGlobalPipes(new ValidationPipe({
     disableErrorMessages: false,
-    whitelist: false,
-    forbidNonWhitelisted: false
+    whitelist: true,
+    forbidNonWhitelisted: true
   }));
   await app.listen(process.env.PORT);
 }

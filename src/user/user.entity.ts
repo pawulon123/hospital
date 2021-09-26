@@ -1,4 +1,3 @@
-
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { WardUserEntity } from 'src/ward-user/ward-user.entity';
 
@@ -13,8 +12,8 @@ export class UserEntity {
     @Column({ type: "varchar", length: 50 })
     password: string;
 
-    @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.user)
-    public wardUsers!: WardUserEntity[];
+    @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.user,{ onUpdate: "CASCADE" })
+    public wards!: WardUserEntity[];
 
 
 }

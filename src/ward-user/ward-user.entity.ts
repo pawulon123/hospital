@@ -1,6 +1,6 @@
 import { UserEntity as User } from './../user/user.entity';
 import { WardEntity as Ward } from './../ward/ward.entity';
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "ward-user" })
 export class WardUserEntity {
@@ -13,10 +13,10 @@ export class WardUserEntity {
     @Column()
     public userId!: number;
     
-    @ManyToOne(() => User, user => user.wardUsers)
+    @ManyToOne(() => User, user => user.wards,{onDelete: "CASCADE" })
     public user! : User;
     
-    @ManyToOne(() => Ward, ward => ward.wardUsers)
+    @ManyToOne(() => Ward, ward => ward.users, {onDelete: "CASCADE" })
     public ward! : Ward;
 
 }

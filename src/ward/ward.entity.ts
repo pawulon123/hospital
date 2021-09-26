@@ -9,7 +9,7 @@ export class WardEntity {
     @Column({ type: 'varchar', length: 100 })
     name: string;
 
-    @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.ward)
-    public wardUsers!: WardUserEntity[];
+    @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.ward, { onUpdate: "CASCADE" })
+    public users!: WardUserEntity[];
 }
 

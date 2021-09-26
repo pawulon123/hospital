@@ -1,5 +1,6 @@
-
-import { IsEmail, IsNotEmpty, Length, MaxLength } from 'class-validator';
+import { UserWardsDto } from './user-wards.dto';
+import { ArrayUnique, IsArray, IsEmail, IsNotEmpty, Length, MaxLength, ValidateNested } from 'class-validator'
+import { Type } from 'class-transformer';
 export class UserDto {
 
     @IsNotEmpty()
@@ -11,5 +12,10 @@ export class UserDto {
     @Length(6, 50)
     password: string;
     
-    // wards:any;
+    @IsNotEmpty()
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => UserWardsDto)
+    @ArrayUnique(UserWardsDto => UserWardsDto.id)
+    wards: UserWardsDto[];
     }
