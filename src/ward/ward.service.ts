@@ -13,5 +13,5 @@ export class WardService {
     }
     async one(id) {
         return await this.wardRepository.findOne(id, {relations: ["rooms", "rooms.beds"]});
-        }
+    }
 }
