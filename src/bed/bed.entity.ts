@@ -1,14 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { RoomEntity as Room } from "../room/room.entity";
 @Entity({ name: "bed" })
 export class BedEntity {
     
     @PrimaryGeneratedColumn()
     id: number;
-    
-    @Column({ type: "int", nullable: true })
-    id_room: number;
-    
+   
     @Column({ type: "int", nullable: true })
     x_svg: number;
     
@@ -20,4 +17,7 @@ export class BedEntity {
     
     @Column({ type: "varchar", length: 20, default: "basic" })
     type: string;
+
+    @ManyToOne(() => Room, room => room.beds)
+    room: Room;
 }

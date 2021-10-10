@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as helmet from 'helmet';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule,  { cors: true });
   (app as NestExpressApplication).use(helmet());
   app.useGlobalPipes(new ValidationPipe({
     disableErrorMessages: false,

@@ -1,11 +1,7 @@
 import { IsInt, IsOptional, IsPositive, IsString, MaxLength } from 'class-validator';
 export class BedDto {
     // id: number;
-    @IsOptional()
-    @IsPositive()
-    @IsInt()
-    id_room: number;
-    
+  
     @IsOptional()
     @IsInt()
     x_svg: number;

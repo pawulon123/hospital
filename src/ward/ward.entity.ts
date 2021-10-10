@@ -1,3 +1,4 @@
+import { RoomEntity as Room } from './../room/room.entity';
 import { WardUserEntity } from "src/ward-user/ward-user.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -11,5 +12,8 @@ export class WardEntity {
 
     @OneToMany(() => WardUserEntity, wardUserEntity => wardUserEntity.ward, { onUpdate: "CASCADE" })
     public users!: WardUserEntity[];
+
+    @OneToMany(() => Room, room => room.ward)
+    rooms: Room[];
 }
 
