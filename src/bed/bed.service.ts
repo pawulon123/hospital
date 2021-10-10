@@ -4,6 +4,7 @@ import { Repository, UpdateResult } from 'typeorm';
 import { BedEntity } from './bed.entity';
 import { BedDto } from './bed.dto'
 import { HttpException } from '@nestjs/common';
+
 @Injectable()
 export class BedService {
     constructor(
@@ -11,10 +12,10 @@ export class BedService {
         private bedRepository: Repository<BedEntity>,
     ) { }
     async index(): Promise<BedDto[]> {
-        return await this.bedRepository.find();
+        return await this.bedRepository.find({relations: ["patient"]});
     }
     async findOne(id: string): Promise<BedDto> {
-        return await this.bedRepository.findOne(id);
+        return await this.bedRepository.findOne(id, {relations: ["patient"]});
     }
     async create(bed: BedDto): Promise<BedEntity> {
         return await this.bedRepository.save(bed);
@@ -28,5 +29,6 @@ export class BedService {
     private ifItDoesNotExistInRepository() {
         throw new HttpException('404 not found', HttpStatus.NOT_FOUND);
     }
+   
 }
 

@@ -1,5 +1,6 @@
 import { Gender} from './sex'
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BedEntity as Bed } from "../bed/bed.entity";
 
 @Entity({ name: "patient" })
 export class PatientEntity {
@@ -25,10 +26,6 @@ export class PatientEntity {
     @Column({ default: false })
     walking: boolean ;
 
-    // @Column({ type: "varchar", length: 20, nullable: true })
-    // startDate: string;
-
-    // @Column({ type: "varchar", length: 20, nullable: true })
-    // endtDate: string;
-
+    @OneToOne(() => Bed, bed => bed.patient) // specify inverse side as a second parameter
+    bed: Bed;
 }
