@@ -1,5 +1,6 @@
+import { StayEntity as Stay } from './../stay/stay.entity';
 import { Gender} from './sex'
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BedEntity as Bed } from "../bed/bed.entity";
 
 @Entity({ name: "patient" })
@@ -26,6 +27,9 @@ export class PatientEntity {
     @Column({ default: false })
     walking: boolean ;
 
-    @OneToOne(() => Bed, bed => bed.patient) // specify inverse side as a second parameter
+    @OneToOne(() => Bed, bed => bed.patient) 
     bed: Bed;
+
+    @OneToMany(() => Stay, stay => stay.patient)
+    stays: Stay[];
 }

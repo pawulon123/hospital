@@ -29,6 +29,9 @@ export class BedService {
     private ifItDoesNotExistInRepository() {
         throw new HttpException('404 not found', HttpStatus.NOT_FOUND);
     }
-   
+    indexInWard(idBeds){
+        console.log(idBeds);
+        
+    }
 }
 
