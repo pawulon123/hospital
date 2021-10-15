@@ -1,9 +1,9 @@
 import { Parmas as QueryString } from './../shared/params';
 
-import {Controller, Get, Post, Put, Delete, Body, Param, } from '@nestjs/common';
+import {Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { BedService } from './bed.service';
 import { BedDto } from './bed.dto';
-import { BedEntity } from 'src/bed/bed.entity';
+import { BedEntity } from './bed.entity';
 @Controller('bed')
 export class BedController {
     constructor(private readonly bedService: BedService) { }

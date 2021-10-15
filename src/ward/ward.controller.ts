@@ -10,7 +10,6 @@ export class WardController {
         return this.wardService.index();
     }
     @Get(':id')
-
     findOne(@Param() params: QueryString){
         return this.wardService.one(params.id);
     }
