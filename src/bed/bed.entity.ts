@@ -19,6 +19,9 @@ export class BedEntity {
     @Column({ type: "varchar", length: 20, default: "basic" })
     type: string;
 
+    @Column({ type: "varchar",length: 100, nullable: true })
+    polygon: string;
+
     @ManyToOne(() => Room, room => room.beds)
     room: Room;
 

@@ -5,6 +5,10 @@ export class BedDto {
     @IsOptional()
     @IsInt()
     x_svg: number;
+ 
+    @IsOptional()
+    @IsInt()
+    room: any;
     
     @IsOptional()
     @IsInt()
@@ -13,6 +17,9 @@ export class BedDto {
     @IsOptional()
     @IsInt()
     rotate: number;
+ 
+    @IsOptional()
+    polygon: string;
     
     @IsOptional()
     @MaxLength(20)
