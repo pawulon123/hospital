@@ -25,6 +25,9 @@ export class BedService {
     async destroy(id: string): Promise<boolean> {
         return (await this.bedRepository.delete(id)).affected === 1 ? true : false;
     }
+    async destroyMany(ids: number[]): Promise<string | boolean> {
+        return (await this.bedRepository.delete(ids)).affected === ids.length ? true : '{"message":"can\'t remove everyone bed"}' ;
+    }
     private ifItDoesNotExistInRepository() {
         throw new HttpException('404 not found', HttpStatus.NOT_FOUND);
     }

@@ -1,6 +1,6 @@
 import { Parmas as QueryString } from './../shared/params';
 
-import {Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { BedService } from './bed.service';
 import { BedDto } from './bed.dto';
 import { BedEntity } from './bed.entity';
@@ -20,11 +20,15 @@ export class BedController {
         return this.bedService.create(bed);
     }
     @Put(':id')
-    update(@Param() params: QueryString , @Body() bed: BedDto): Promise<Boolean> {
+    update(@Param() params: QueryString, @Body() bed: BedDto): Promise<Boolean> {
         return this.bedService.update(params.id, bed);
     }
     @Delete(':id')
-    destroy(@Param() params: QueryString): Promise<Boolean> {
+    destroy(@Param() params: QueryString): Promise<boolean> {
         return this.bedService.destroy(params.id);
+    }
+    @Post('many/')
+    destroyMany(@Body() ids: number[]): Promise<string | boolean> {
+        return this.bedService.destroyMany(ids);
     }
 }
