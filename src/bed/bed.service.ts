@@ -19,14 +19,11 @@ export class BedService {
     async create(bed: BedDto): Promise<BedEntity> {
         return await this.bedRepository.save(bed);
     }
-    async update(id: string, body: BedDto): Promise<boolean> {
-        return (await this.bedRepository.update(id, body)).affected === 1 ? true : false;
+    async update(beds: BedDto): Promise<any> {
+       return await this.bedRepository.save(beds);
     }
     async destroy(id: string): Promise<boolean> {
         return (await this.bedRepository.delete(id)).affected === 1 ? true : false;
-    }
-    async destroyMany(ids: number[]): Promise<string | boolean> {
-        return (await this.bedRepository.delete(ids)).affected === ids.length ? true : '{"message":"can\'t remove everyone bed"}' ;
     }
     private ifItDoesNotExistInRepository() {
         throw new HttpException('404 not found', HttpStatus.NOT_FOUND);

@@ -19,16 +19,13 @@ export class BedController {
     create(@Body() bed: BedDto): Promise<BedEntity> {
         return this.bedService.create(bed);
     }
-    @Put(':id')
-    update(@Param() params: QueryString, @Body() bed: BedDto): Promise<Boolean> {
-        return this.bedService.update(params.id, bed);
+    @Put()
+    update(@Body() bed: any): Promise<any> {console.log(bed);
+        return this.bedService.update(bed);
     }
     @Delete(':id')
     destroy(@Param() params: QueryString): Promise<boolean> {
         return this.bedService.destroy(params.id);
     }
-    @Post('many/')
-    destroyMany(@Body() ids: number[]): Promise<string | boolean> {
-        return this.bedService.destroyMany(ids);
-    }
+ 
 }
